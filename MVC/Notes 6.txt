@@ -1,0 +1,50 @@
+Asynchronous Controllers : 
+Select the check box 'Use async controller actions' in the controller creation along with EF support
+
+1. Return type is prefixed with async notifying that the action method returns data asynchronously
+
+2. the return type is a Task<ActionResult>, represents asynchronous operations
+
+3. Any database related operations/read and write is prefixed with await keyword
+
+4. ToListAsync(), instead of ToList(), that returns data asynchronously
+
+
+Routing :
+ 1. Conventional routing
+
+ 2. Attribute Routing : for this, go to Routeconfig.cs file and enable the attribute routing by including
+
+  routes.MapMvcAttributeRoutes() after ignore route
+
+
+Forms  Authentication
+
+
+0) include System.Web.Security namespace
+1) set authentication mode as forms in the web.config file
+2) Use the FormsAuthentication.SetAuthCookie for login
+3) Use FormAuthentication.SignOut for logout
+
+
+after forms authentication along with role based authentication the web.config file looks as below: 
+-------------------------------------------------------
+
+
+<system.web>
+    <authentication mode="Forms">
+      <forms loginUrl="Accounts/Login"></forms>
+    </authentication>
+    <roleManager defaultProvider="UserRoleProvider" enabled="true">
+      <providers>
+        <clear/>
+        <add name="UserRoleProvider" type ="SecurityPrj.Models.UserRoleProvider"/>
+      </providers>
+    </roleManager>
+    <compilation debug="true" targetFramework="4.7.2" />
+    <httpRuntime targetFramework="4.7.2" />
+  </system.web>
+
+
+
+ 
